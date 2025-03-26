@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikke's Chatbot</title>
+    {% load static %}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="bg-black text-white">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <span class="logo">AI Chatbot 🤖</span>
+            <div class="nav-buttons">
+                <button id="theme-toggle" onclick="toggleTheme()">🌙</button>
+                <a href="https://notvikke.github.io/portfolio/" target="_blank" class="portfolio-btn">Portfolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+      
+    </div>
+
+    <script src="{% static 'js/navbar.js' %}"></script>
+</body>
+</html>
