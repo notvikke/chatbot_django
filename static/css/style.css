@@ -1,0 +1,229 @@
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Default Light Theme Styles */
+body {
+    background-color: white; /* Light background */
+    color: #212529; /* Dark text */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Chat bubbles animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.5s ease-in-out; }
+
+/* Chat container styling - Light */
+.chat-container {
+    height: 80vh;
+    width: 70vw;
+    max-width: 900px;
+    background-color: #f8f9fa; /* Light grey background */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dee2e6; /* Subtle border for light theme */
+}
+
+/* Header - Light */
+.chat-header {
+    background-color: #e9ecef; /* Lighter header */
+    color: #495057; /* Darker grey text */
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Chatbox area - Light */
+.chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* General message line container (no theme change needed) */
+.message-line {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    max-width: 85%;
+}
+.user-message-line { align-self: flex-end; }
+.bot-message-line { align-self: flex-start; }
+
+/* Avatar styling - Light */
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+.user-avatar { background-color: #007bff; color: white; } /* Keep user blue */
+.bot-avatar { background-color: #6c757d; color: white; } /* Medium grey bot avatar */
+
+/* Message bubble styles - Light */
+.message {
+    padding: 10px 14px;
+    border-radius: 12px;
+    word-wrap: break-word;
+}
+.user-message {
+    background-color: #007bff; /* Keep user blue */
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+.bot-message {
+    background-color: #e9ecef; /* Matches header */
+    color: #212529; /* Dark text */
+    border-bottom-left-radius: 4px;
+    border: 1px solid #d6dbe1; /* Subtle border for bot bubble */
+}
+
+/* Typing Indicator - Light */
+.typing-indicator-container {
+    padding: 0 15px 10px 15px;
+    flex-shrink: 0;
+}
+#typing-indicator {
+    color: #6c757d; /* Medium grey text */
+    text-align: left;
+    font-size: 0.9em;
+}
+
+/* Input Area - Light */
+.input-area {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-top: 1px solid #dee2e6; /* Light border */
+    flex-shrink: 0;
+    background-color: #f8f9fa; /* Match container background */
+}
+#user-input {
+    flex: 1;
+    background-color: #fff; /* White input */
+    color: #495057; /* Dark text */
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da; /* Standard input border */
+    outline: none;
+    margin-right: 0.5rem;
+    transition: border-color 0.2s ease;
+}
+#user-input:focus {
+    border-color: #86b7fe; /* Blue focus border like Bootstrap */
+}
+.send-button {
+    background-color: #007bff; /* Keep blue */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.send-button:hover { background-color: #0056b3; }
+
+
+/* Navbar Styling - Light */
+.navbar {
+    width: 100%;
+    background: #ffffff; /* White navbar */
+    display: flex;
+    justify-content: center;
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+    border-bottom: 1px solid #dee2e6;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #212529; /* Dark text for logo */
+}
+.nav-buttons { display: flex; gap: 15px; align-items: center; }
+.portfolio-btn { /* Keep blue */
+    text-decoration: none; background: #007bff; color: white;
+    padding: 8px 15px; border-radius: 5px; transition: background-color 0.3s; font-size: 14px;
+}
+.portfolio-btn:hover { background: #0056b3; }
+#theme-toggle {
+    background: none; border: none; font-size: 20px;
+    cursor: pointer; color: #495057; /* Dark icon */ padding: 0;
+}
+
+
+/* --- Dark Mode Overrides --- */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0; /* Slightly off-white */
+}
+.dark-mode .chat-container {
+    background-color: #1e1e1e; /* Dark container */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333; /* Darker border */
+}
+.dark-mode .chat-header {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border-bottom: 1px solid #333;
+}
+.dark-mode .bot-avatar { background-color: #555; color: white; } /* Dark bot avatar */
+/* Keep user avatar blue */
+.dark-mode .message { color: #e0e0e0; } /* Default dark mode message text */
+/* Keep user message blue/white */
+.dark-mode .bot-message {
+    background-color: #383838;
+    color: #e0e0e0;
+    border: none; /* Remove border in dark mode */
+}
+.dark-mode #typing-indicator { color: #888; } /* Lighter grey */
+.dark-mode .input-area {
+    border-top-color: #333;
+    background-color: #1e1e1e; /* Match container */
+}
+.dark-mode #user-input {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #444; /* Subtle border for dark input */
+}
+.dark-mode #user-input:focus {
+    border-color: #5a9afa;
+}
+/* Send button remains blue */
+.dark-mode .navbar {
+    background: #121212; /* Match body */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    border-bottom: 1px solid #333;
+}
+.dark-mode .logo { color: #e0e0e0; }
+.dark-mode #theme-toggle { color: #e0e0e0; } /* Light icon */
+
+    
