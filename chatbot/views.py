@@ -1,3 +1,4 @@
+import os
 import google.generativeai as genai
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -6,11 +7,26 @@ from django.shortcuts import render
 import time
 from django.http import JsonResponse
 
-# Configure Google Gemini API
-API_KEY = "AIzaSyCkvlGlVne6pS7yGsf_SMfQdqzLGq6mNd4"  # Replace with your actual API key
-genai.configure(api_key=API_KEY)
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
 
-MODEL_NAME = "gemini-1.5-pro-latest"  # Change if needed
+# 2. Get the Model Name from the environment, providing a default
+DEFAULT_MODEL = "gemini-1.5-pro-latest" # Keep your desired default here
+MODEL_NAME = os.environ.get('GEMINI_MODEL_NAME', DEFAULT_MODEL)
+
+# 3. Configure Gemini, but only if the key exists
+if not GEMINI_API_KEY:
+    print("ERROR: Gemini API Key (GEMINI_API_KEY) not found in environment variables.")
+    # Depending on your application structure, you might want to:
+    # - raise Exception("Gemini API Key not configured.")
+    # - Set a flag indicating the service is unavailable
+    # For now, we just print an error. Calls using 'genai' will likely fail later.
+else:
+    try:
+        genai.configure(api_key=GEMINI_API_KEY)
+        print(f"Gemini API configured successfully. Using model: {MODEL_NAME}")
+    except Exception as e:
+        print(f"ERROR: Failed to configure Gemini API: {e}")
+        # Handle the configuration error appropriately
 
 def generate_response(user_input):
     try:
